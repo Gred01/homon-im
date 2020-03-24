@@ -1,0 +1,12 @@
+server:
+  port: 6111
+
+
+homon:
+  netty:
+    ioRate: 80
+    port: ${server.port}
+    host: 127.0.0.1
+    thread:
+      bosscnt: 1
+      workcnt: 8

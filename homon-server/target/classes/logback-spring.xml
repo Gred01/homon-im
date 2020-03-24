@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration  -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user             -->
+<!--                                                                -->
+<!-- For professional support please see                            -->
+<!--    http://www.qos.ch/shop/products/professionalSupport         -->
+<!--                                                                -->
+<configuration>
+
+	<springProperty scope="context" name="logPath" source="logging.path"/>
+
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss}][%-5p]  %thread %c{0}.%M[line:%line] - %m%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="file-debug" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!--See http://logback.qos.ch/manual/appenders.html#RollingFileAppender-->
+		<!--and http://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy-->
+		<!--for further documentation-->
+		<File>${logPath}/debug.log</File>
+		<append>true</append>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss}][%-5p]  %thread %c{0}.%M[line:%line] - %m%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logPath}/debug.log.%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+			<maxHistory>7</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 100MB -->
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="file-info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!--See http://logback.qos.ch/manual/appenders.html#RollingFileAppender-->
+		<!--and http://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy-->
+		<!--for further documentation-->
+		<File>${logPath}/info.log</File>
+		<append>true</append>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss}][%-5p] %thread %c{0}.%M[line:%line] - %m%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logPath}/info.log.%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+			<maxHistory>7</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 100MB -->
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="file-error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!--for further documentation-->
+		<append>true</append>
+		<File>${logPath}/error.log</File>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss}][%-5p] %thread %c{0}.%M[line:%line] - %m%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logPath}/error.log.%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+			<maxHistory>7</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 100MB -->
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="file-warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!--for further documentation-->
+		<append>true</append>
+		<File>${logPath}/warn.log</File>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss}][%-5p] %thread %c{0}.%M[line:%line] - %m%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>WARN</level>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logPath}/warn.log.%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+			<maxHistory>7</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 100MB -->
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="nacos-client" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logPath}/nacos-client.log</file>
+		<append>true</append>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss}][%-5p] %thread %c{0}.%M[line:%line] - %m%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${logPath}/nacos-client.log.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<maxHistory>7</maxHistory>
+			<maxFileSize>1GB</maxFileSize>
+			<totalSizeCap>2GB</totalSizeCap>
+			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="xxl" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logPath}/xxl.log</file>
+		<append>true</append>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss}][%-5p] %thread %c{0}.%M[line:%line] - %m%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${logPath}/xxl.log.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<maxHistory>7</maxHistory>
+			<maxFileSize>1GB</maxFileSize>
+			<totalSizeCap>2GB</totalSizeCap>
+			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="jetcache" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logPath}/jetcache.log</file>
+		<append>true</append>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss}][%-5p] %thread %c{0}.%M[line:%line] - %m%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${logPath}/jetcache.log.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<maxHistory>7</maxHistory>
+			<maxFileSize>1GB</maxFileSize>
+			<totalSizeCap>2GB</totalSizeCap>
+			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+		</rollingPolicy>
+	</appender>
+
+	<logger name="com.alicp" additivity="false" level="info">
+		<appender-ref ref="jetcache"/>
+	</logger>
+
+	<logger name="com.xxl" additivity="false" level="error">
+		<appender-ref ref="xxl"/>
+	</logger>
+
+	<logger name="com.alibaba.nacos" additivity="false" level="error">
+        <appender-ref ref="nacos-client"/>
+    </logger>	
+	
+	<logger name="file-info" additivity="false" level="info" >
+		<appender-ref ref="file-info"/>
+	</logger>
+	<logger name="file-warn" additivity="false" level="warn" >
+		<appender-ref ref="file-warn"/>
+	</logger>
+
+	<root level="debug">
+		<appender-ref ref="stdout"/>
+		<appender-ref ref="file-error"/>
+		<appender-ref ref="file-warn"/>
+		<appender-ref ref="file-info"/>
+		<appender-ref ref="file-debug"/>
+	</root>
+
+	<logger name="org.springframework" level="info"/>
+</configuration>

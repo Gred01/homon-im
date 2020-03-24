@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="homon-kit-netty" />
+        <module name="homon-kit-db" />
+        <module name="homon-kit-cache" />
+        <module name="homon-core" />
+        <module name="homon-kit-rpc" />
+        <module name="homon-api" />
+        <module name="homon-biz-push" />
+        <module name="homon-client" />
+        <module name="homon-kit-mq" />
+        <module name="homon-test" />
+        <module name="homon-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="homon-biz" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="homon-api" options="-parameters" />
+      <module name="homon-biz" options="-parameters" />
+      <module name="homon-biz-push" options="-parameters" />
+      <module name="homon-client" options="-parameters" />
+      <module name="homon-core" options="-parameters" />
+      <module name="homon-kit" options="-parameters" />
+      <module name="homon-kit-cache" options="-parameters" />
+      <module name="homon-kit-db" options="-parameters" />
+      <module name="homon-kit-mq" options="-parameters" />
+      <module name="homon-kit-netty" options="-parameters" />
+      <module name="homon-kit-rpc" options="-parameters" />
+      <module name="homon-server" options="-parameters" />
+      <module name="homon-test" options="-parameters" />
+    </option>
+  </component>
+</project>

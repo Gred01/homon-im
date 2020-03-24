@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/homon-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-biz/homon-biz-push/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-biz/homon-biz-push/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-client/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-core/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-kit/homon-kit-cache/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-kit/homon-kit-cache/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-kit/homon-kit-db/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-kit/homon-kit-db/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-kit/homon-kit-mq/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-kit/homon-kit-mq/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-kit/homon-kit-netty/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-kit/homon-kit-netty/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-kit/homon-kit-rpc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-kit/homon-kit-rpc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-test/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homon-test/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
