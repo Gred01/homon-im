@@ -143,7 +143,7 @@ public abstract class AbstractNettyTcpServer extends AbstractService implements 
         }
 
         if (workerGroup == null) {
-            EpollEventLoopGroup epollEventLoopGroup = new EpollEventLoopGroup(nettyConfig.getThread().getBosscnt(), getWorkThreadFactory());
+            EpollEventLoopGroup epollEventLoopGroup = new EpollEventLoopGroup(nettyConfig.getThread().getWorkcnt(), getWorkThreadFactory());
             epollEventLoopGroup.setIoRatio(nettyConfig.getIoRate());
             workerGroup = epollEventLoopGroup;
         }

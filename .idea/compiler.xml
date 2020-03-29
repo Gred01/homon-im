@@ -12,6 +12,7 @@
         <module name="homon-core" />
         <module name="homon-kit-rpc" />
         <module name="homon-api" />
+        <module name="homon-biz-user" />
         <module name="homon-biz-push" />
         <module name="homon-client" />
         <module name="homon-kit-mq" />
@@ -28,6 +29,7 @@
       <module name="homon-api" options="-parameters" />
       <module name="homon-biz" options="-parameters" />
       <module name="homon-biz-push" options="-parameters" />
+      <module name="homon-biz-user" options="-parameters" />
       <module name="homon-client" options="-parameters" />
       <module name="homon-core" options="-parameters" />
       <module name="homon-kit" options="-parameters" />
