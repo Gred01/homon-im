@@ -37,7 +37,8 @@
         <fast.json.version>1.2.47</fast.json.version>
         <commons.version>3.6</commons.version>
         <guava.version>20.0</guava.version>
-        <junit.version>4.10</junit.version>
+        <junit.version>4.13</junit.version>
+        <jackson.version>2.9.6</jackson.version>
     </properties>
 
     <dependencies>
@@ -182,11 +183,12 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fast.json.version}</version>
             </dependency>
-            <!-- redis client -->
+
+            <!-- jackson json 优化缓存对象序列化 -->
             <dependency>
-                <groupId>redis.clients</groupId>
-                <artifactId>jedis</artifactId>
-                <version>${redis.version}</version>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
