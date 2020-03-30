@@ -33,6 +33,8 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import io.netty.util.AttributeKey;
 import lombok.extern.slf4j.Slf4j;
 
@@ -68,7 +70,9 @@ public final class ConnClientBoot extends AbstractService {
         bootstrap.handler(new ChannelInitializer<SocketChannel>() {
             @Override
             public void initChannel(SocketChannel ch) throws Exception {
+                ch.pipeline().addLast("protoDecoder", new ProtobufVarint32FrameDecoder());
                 ch.pipeline().addLast("decoder", new PacketDecoder());
+                ch.pipeline().addLast("protoEncoder", new ProtobufVarint32LengthFieldPrepender());
                 ch.pipeline().addLast("encoder", PacketEncoder.INSTANCE);
                 ch.pipeline().addLast("handler", new ClientHandler(ConnClientBoot.this));
             }

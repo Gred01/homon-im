@@ -16,6 +16,8 @@ import io.netty.channel.epoll.EpollEventLoopGroup;
 import io.netty.channel.epoll.EpollServerSocketChannel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import io.netty.util.concurrent.DefaultThreadFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -238,7 +240,9 @@ public abstract class AbstractNettyTcpServer extends AbstractService implements 
      * @param pipeline
      */
     protected void initPipeline(ChannelPipeline pipeline) {
+        pipeline.addLast("protobufDecoder", new ProtobufVarint32FrameDecoder());
         pipeline.addLast("decoder", getDecoder());
+        pipeline.addLast("protobufEecoder", new ProtobufVarint32LengthFieldPrepender());
         pipeline.addLast("encoder", getEncoder());
         pipeline.addLast("handler", getChannelHandler());
     }

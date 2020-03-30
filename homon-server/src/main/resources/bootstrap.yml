@@ -6,4 +6,4 @@ spring:
 
 logging:
   config: classpath:logback-spring.xml
-  path: ./logs
+  path: ../logs
