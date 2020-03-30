@@ -17,6 +17,18 @@
             <groupId>com.max</groupId>
             <artifactId>homon-api</artifactId>
         </dependency>
+
+        <!-- protostuff -->
+        <dependency>
+            <groupId>com.dyuproject.protostuff</groupId>
+            <artifactId>protostuff-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.dyuproject.protostuff</groupId>
+            <artifactId>protostuff-runtime</artifactId>
+        </dependency>
+        <!-- protostuff end -->
     </dependencies>
 
 </project>

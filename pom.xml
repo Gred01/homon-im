@@ -39,6 +39,7 @@
         <guava.version>20.0</guava.version>
         <junit.version>4.13</junit.version>
         <jackson.version>2.9.6</jackson.version>
+        <protostuff.version>1.1.5</protostuff.version>
     </properties>
 
     <dependencies>
@@ -190,6 +191,20 @@
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
+
+            <!-- protostuff -->
+            <dependency>
+                <groupId>com.dyuproject.protostuff</groupId>
+                <artifactId>protostuff-core</artifactId>
+                <version>${protostuff.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.dyuproject.protostuff</groupId>
+                <artifactId>protostuff-runtime</artifactId>
+                <version>${protostuff.version}</version>
+            </dependency>
+            <!-- protostuff end -->
         </dependencies>
     </dependencyManagement>
 
