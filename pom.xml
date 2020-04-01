@@ -40,6 +40,10 @@
         <junit.version>4.13</junit.version>
         <jackson.version>2.9.6</jackson.version>
         <protostuff.version>1.1.5</protostuff.version>
+        <mybatis.plus.version>3.0.7</mybatis.plus.version>
+        <druid.version>1.1.10</druid.version>
+        <pagehelper.version>1.2.13</pagehelper.version>
+        <hutool.version>5.2.5</hutool.version>
     </properties>
 
     <dependencies>
@@ -131,6 +135,11 @@
                 <artifactId>homon-test</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>homon-kit-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <!-- ================================================= -->
             <!-- 日志 -->
             <!-- ================================================= -->
@@ -205,6 +214,48 @@
                 <version>${protostuff.version}</version>
             </dependency>
             <!-- protostuff end -->
+
+            <!-- mybatis-plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+            <!-- mybatis-plus end-->
+
+            <!-- druid 官方 starter -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!-- druid 官方 starter -->
+
+            <!-- mybatis的分页插件 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+            <!-- mybatis的分页插件-plus -->
+
+            <!-- hutool start -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <!-- hutool end -->
         </dependencies>
     </dependencyManagement>
 

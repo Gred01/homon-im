@@ -18,6 +18,7 @@
         <module>homon-kit-cache</module>
         <module>homon-kit-netty</module>
         <module>homon-kit-rpc</module>
+        <module>homon-kit-common</module>
     </modules>
 
 </project>

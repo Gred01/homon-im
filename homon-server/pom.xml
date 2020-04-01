@@ -19,23 +19,19 @@
 
         <dependency>
             <groupId>com.max</groupId>
+            <artifactId>homon-kit-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.max</groupId>
             <artifactId>homon-api</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>com.max</groupId>
             <artifactId>homon-core</artifactId>
             <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
         <dependency>

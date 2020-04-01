@@ -12,4 +12,33 @@
     <artifactId>homon-biz-user</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.max</groupId>
+            <artifactId>homon-kit-db</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.max</groupId>
+            <artifactId>homon-kit-cache</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.max</groupId>
+            <artifactId>homon-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.max</groupId>
+            <artifactId>homon-kit-common</artifactId>
+        </dependency>
+
+        <!-- spring web支持 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+
+    </dependencies>
 </project>
