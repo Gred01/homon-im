@@ -8,4 +8,6 @@ import com.max.homon.core.bean.vo.LoginVO;
 public interface ILoginService extends IService<UserInfo> {
 
     LoginVO login(LoginBO req);
+
+    LoginVO getUserBySessionId(String sessionId);
 }

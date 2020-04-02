@@ -26,7 +26,7 @@ public class RobinLoadBalance extends AbstractLoadBalanceImpl{
 
     @Override
     ChannelInfoVO loadBalance(List<ChannelInfoVO> channels) {
-        int length = channels.size();
+        int length = channels.size()-1;
         int target = length & round.getAndIncrement();
         return channels.get(target);
     }

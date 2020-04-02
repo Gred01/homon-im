@@ -4,6 +4,7 @@ import com.max.homon.biz.user.service.ILoginService;
 import com.max.homon.core.bean.base.RequestParams;
 import com.max.homon.core.bean.base.ResponseParams;
 import com.max.homon.core.bean.bo.LoginBO;
+import com.max.homon.core.bean.bo.UserDetailBO;
 import com.max.homon.core.enums.RespType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,14 @@ public class LoginController {
 
         ResponseParams responseParams = ResponseParams.buildResponseParams(requestParams, RespType.SUCCESS);
         responseParams.setParam(loginService.login(requestParams.getParam()));
+        return responseParams;
+    }
+
+    @PostMapping("/detail")
+    public ResponseParams detail(@RequestBody RequestParams<UserDetailBO> requestParams) {
+
+        ResponseParams responseParams = ResponseParams.buildResponseParams(requestParams, RespType.SUCCESS);
+        responseParams.setParam(loginService.getUserBySessionId(requestParams.getSessionId()));
         return responseParams;
     }
 

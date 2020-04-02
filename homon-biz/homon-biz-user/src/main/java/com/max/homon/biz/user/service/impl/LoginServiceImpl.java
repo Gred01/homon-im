@@ -7,12 +7,14 @@ import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.max.homon.biz.user.entity.UserInfo;
+import com.max.homon.biz.user.loadbalance.ILoadBalance;
 import com.max.homon.biz.user.loadbalance.RobinLoadBalance;
 import com.max.homon.biz.user.mapper.IUserInfoMapper;
 import com.max.homon.biz.user.service.ILoginService;
 import com.max.homon.core.bean.bo.LoginBO;
 import com.max.homon.core.bean.vo.LoginVO;
 import com.max.homon.core.bean.vo.UserInfoVO;
+import com.max.homon.kit.cache.util.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,10 @@ import org.springframework.stereotype.Service;
 public class LoginServiceImpl  extends ServiceImpl<IUserInfoMapper, UserInfo> implements ILoginService {
 
     @Autowired
-    private RobinLoadBalance robinLoadBalance;
+    private ILoadBalance robinLoadBalance;
+
+    @Autowired
+    private RedisUtil redisUtil;
 
     @Override
     public LoginVO login(LoginBO req) {
@@ -42,7 +47,14 @@ public class LoginServiceImpl  extends ServiceImpl<IUserInfoMapper, UserInfo> im
         loginVO.setUser(BeanUtil.copyProperties(userInfo,UserInfoVO.class));
         loginVO.setSessionId(IdUtil.simpleUUID());
         loginVO.setChannel(robinLoadBalance.getBestOne());
+
+        redisUtil.set(loginVO.getSessionId(),loginVO);
         return loginVO;
+    }
+
+    @Override
+    public LoginVO getUserBySessionId(String sessionId) {
+        return (LoginVO) redisUtil.get(sessionId);
     }
 
 }

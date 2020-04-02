@@ -1,6 +1,11 @@
 server:
   port: 8080
 spring:
+  application:
+    name: homon-biz-user
+  redis:
+    host: 127.0.0.1
+    port: 6379
   datasource:
     druid: 
       url: jdbc:mysql://127.0.0.1:3306/homon?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&&serverTimezone=GMT
@@ -35,8 +40,6 @@ spring:
       stat-view-servlet.reset-enable:  true
       stat-view-servlet.login-username: admin
       stat-view-servlet.login-password: admin
-  application:
-    name: homon-biz-user
+
 mybatis-plus:
   typeAliasesPackage: com.max.homon.biz.user.entity
-
