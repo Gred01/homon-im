@@ -38,6 +38,7 @@
         <dependency>
             <groupId>com.max</groupId>
             <artifactId>homon-kit-common</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

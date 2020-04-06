@@ -1,6 +1,9 @@
+spring:
+  application:
+    name: netty-server
+
 server:
   port: 6111
-
 
 homon:
   netty:
