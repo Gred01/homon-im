@@ -21,7 +21,7 @@ package com.max.homon.test.client;
 
 import com.max.homon.api.serivce.IListener;
 import com.max.homon.core.bean.ClientConfig;
-import com.max.homon.kit.netty.base.AbstractService;
+import com.max.homon.core.base.AbstractService;
 import com.max.homon.kit.netty.codec.PacketDecoder;
 import com.max.homon.kit.netty.codec.PacketEncoder;
 import com.max.homon.kit.netty.config.NettyConfig;

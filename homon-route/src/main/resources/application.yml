@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: homon-route
+
+server:
+  port: 8011
+
+
+homon:
+  zk:
+    enable: true
+    hosts: 127.0.0.1:2181
+    watch-path: /
+    digest: ${spring.application.name}
+    namespace: ${spring.application.name}

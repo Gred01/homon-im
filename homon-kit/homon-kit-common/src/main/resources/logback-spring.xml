@@ -73,36 +73,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
     </appender>
-    
-	<!-- 
-    <appender name="point_log" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_POINT_FILE}/point.log</file>
-        <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss}|${APP_NAME}|%msg%n</pattern>
-            <charset>UTF-8</charset>
-        </encoder>
-         
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_POINT_FILE}/point.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-         
-            <maxHistory>${LOG_FILEMAXDAY}</maxHistory>
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>${LOG_MAXFILESIZE}</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-        </rollingPolicy>
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>INFO</level>
-        </filter>
-    </appender>
 
-    <appender name="point_log_async" class="ch.qos.logback.classic.AsyncAppender">
-        <discardingThreshold>0</discardingThreshold>
-        <appender-ref ref="point_log"/>
-    </appender>
-    <logger name="com.open.capacity.log.monitor" level="info" addtivity="false">
-        <appender-ref ref="point_log_async" />
-    </logger>
-	 -->
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="ERROR"/>

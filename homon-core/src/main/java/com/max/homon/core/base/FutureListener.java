@@ -1,8 +1,7 @@
-package com.max.homon.kit.netty.servie;
+package com.max.homon.core.base;
 
 import com.max.homon.api.serivce.IListener;
 import com.max.homon.core.exception.BizException;
-import com.max.homon.kit.netty.base.AbstractService;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;

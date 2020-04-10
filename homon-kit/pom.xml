@@ -19,6 +19,7 @@
         <module>homon-kit-netty</module>
         <module>homon-kit-rpc</module>
         <module>homon-kit-common</module>
+        <module>homon-kit-zk</module>
     </modules>
 
 </project>

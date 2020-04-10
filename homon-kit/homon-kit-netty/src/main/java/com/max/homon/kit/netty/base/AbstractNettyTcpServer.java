@@ -2,6 +2,7 @@ package com.max.homon.kit.netty.base;
 
 import com.max.homon.api.serivce.IListener;
 import com.max.homon.api.serivce.IServer;
+import com.max.homon.core.base.AbstractService;
 import com.max.homon.core.constant.ThreadNames;
 import com.max.homon.core.enums.ServiceStatus;
 import com.max.homon.core.exception.BizException;
@@ -213,8 +214,6 @@ public abstract class AbstractNettyTcpServer extends AbstractService implements 
             b.bind(address).addListener(future -> {
                 if (future.isSuccess()) {
                     status.set(ServiceStatus.Started);
-
-                    log.info("server start success on:{}", port);
                     if (listener != null) {
                         listener.onSuccess(port);
                     }
