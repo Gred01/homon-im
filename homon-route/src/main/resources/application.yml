@@ -5,11 +5,22 @@ spring:
 server:
   port: 8011
 
-
 homon:
+  netty:
+    ioRate: 80
+    port: ${server.port}
+    host: 127.0.0.1
+    thread:
+      bosscnt: 1
+      workcnt: 8
   zk:
     enable: true
-    hosts: 127.0.0.1:2181
-    watch-path: /
-    digest: ${spring.application.name}
-    namespace: ${spring.application.name}
+    hosts: 127.0.0.1:21811
+    watchPath: /
+    digest: homon
+    namespace: homon
+
+logging:
+  level:
+    com:
+      max: debug

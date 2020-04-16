@@ -12,6 +12,7 @@ public class FutureListener extends CompletableFuture<Boolean> implements IListe
 
     private final IListener listener;
     private final AtomicBoolean started;
+    private FutureListener nextListener;
 
     public FutureListener(AtomicBoolean started) {
         this.started = started;
@@ -32,10 +33,19 @@ public class FutureListener extends CompletableFuture<Boolean> implements IListe
         if (listener != null) {
             listener.onSuccess(args);
         }
+
+        if (nextListener != null){
+            nextListener.onSuccess(args);
+        }
     }
 
     @Override
     public void onFailure(Throwable cause) {
+
+        if (nextListener != null){
+            nextListener.onFailure(cause);
+        }
+
         if (isDone()) {
             return;// 防止Listener被重复执行
         }
@@ -46,6 +56,17 @@ public class FutureListener extends CompletableFuture<Boolean> implements IListe
         throw cause instanceof BizException
                 ? (BizException) cause
                 : new BizException(cause);
+    }
+
+    @Override
+    public void onClosed(Object... args) {
+        if (nextListener != null){
+            nextListener.onClosed(args);
+        }
+
+        if (started.get()){
+            listener.onClosed();
+        }
     }
 
     /**
@@ -70,6 +91,11 @@ public class FutureListener extends CompletableFuture<Boolean> implements IListe
     @Override
     public boolean cancel(boolean mayInterruptIfRunning) {
         throw new UnsupportedOperationException();
+    }
+
+    public FutureListener setNext(FutureListener listener){
+        this.nextListener = listener;
+        return this.nextListener;
     }
 
 }

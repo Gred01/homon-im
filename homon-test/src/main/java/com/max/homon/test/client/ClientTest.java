@@ -28,7 +28,7 @@ public class ClientTest {
     public static void main(String[] args) throws Throwable {
 
         NettyConfig config = new NettyConfig();
-        config.setPort(6111);
+        config.setPort(8011);
         ConnClientBoot boot = new ConnClientBoot(config);
         ClientConfig clientConfig = new ClientConfig();
         boot.doStart(new IListener() {
@@ -41,6 +41,11 @@ public class ClientTest {
             public void onFailure(Throwable cause) {
                 log.debug("[client][启动失败！！！]");
             }
+
+            @Override
+            public void onClosed(Object... args) {
+
+            }
         });
         ChannelFuture future = boot.connect(clientConfig,false).sync();
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -51,6 +56,11 @@ public class ClientTest {
             Packet packet = new Packet(Command.CHAT,1);
             ChatMessage chatMessage = new ChatMessage(Command.CHAT, packet,connection);
             chatMessage.setData(content);
+            if (!chatMessage.getConnection().getChannel().isActive()){
+                connection = new NettyConnection();
+                connection.init(boot.getChannel(),false,new NettyConfig());
+                chatMessage.setConnection(connection);
+            }
             chatMessage.sendRaw();
         }
 

@@ -22,9 +22,8 @@ public class RouteApplication {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(RouteApplication.class,args);
-
         RouteServer connectServer = context.getBean(RouteServer.class);
         connectServer.init();
-        connectServer.start(new FutureListener(new StartSuccessListener(),new AtomicBoolean(false)));
+        connectServer.start(new StartSuccessListener());
     }
 }

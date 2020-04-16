@@ -11,4 +11,6 @@ public interface IListener {
     void onSuccess(Object... args);
 
     void onFailure(Throwable cause);
+
+    void onClosed(Object... args);
 }

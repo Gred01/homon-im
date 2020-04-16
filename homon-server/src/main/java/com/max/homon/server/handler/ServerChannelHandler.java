@@ -12,11 +12,11 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @ChannelHandler.Sharable
-@DependsOn("springContextHolder")
 @Component
 public final class ServerChannelHandler extends SimpleChannelInboundHandler<Packet> {
 
@@ -38,7 +38,8 @@ public final class ServerChannelHandler extends SimpleChannelInboundHandler<Pack
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         IConnection connection = connectionManager.get(ctx.channel());
-        log.error("client caught ex, conn={}", connection);
+        cause.printStackTrace();
+        log.error("client caught ex={}, conn={}",cause, connection);
         ctx.close();
     }
 

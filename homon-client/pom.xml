@@ -12,4 +12,34 @@
     <artifactId>homon-client</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.max</groupId>
+            <artifactId>homon-kit-netty</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.max</groupId>
+            <artifactId>homon-api</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.max</groupId>
+            <artifactId>homon-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.max</groupId>
+            <artifactId>homon-kit-common</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

@@ -3,14 +3,18 @@ package com.max.homon.route.server;
 import com.max.homon.api.serivce.IListener;
 import com.max.homon.kit.netty.api.connection.IConnectionManager;
 import com.max.homon.kit.netty.base.AbstractNettyTcpServer;
-import com.max.homon.route.Handler.ProxyHanlder;
+import com.max.homon.route.handler.ProxyHanlder;
+import com.max.homon.route.proxy.HexDumpProxyFrontendHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.WriteBufferWaterMark;
+import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,13 +25,13 @@ import org.springframework.stereotype.Component;
 **/
 @Slf4j
 @Component
+@DependsOn("springContextHolder")
 public class RouteServer extends AbstractNettyTcpServer {
 
     @Autowired
     private IConnectionManager connectionManager;
     @Autowired
-    private ProxyHanlder channelHandler;
-
+    private ProxyHanlder handler;
 
     @Override
     public void init() {
@@ -43,7 +47,7 @@ public class RouteServer extends AbstractNettyTcpServer {
     **/
     @Override
     protected void initPipeline(ChannelPipeline pipeline) {
-        super.initPipeline(pipeline);
+        pipeline.addLast("handler", getChannelHandler());
     }
 
     /**
@@ -62,6 +66,8 @@ public class RouteServer extends AbstractNettyTcpServer {
         ));
     }
 
+
+
     @Override
     public void start(IListener listener) {
         log.debug("[START][CONNECT-SERVER][ING]");
@@ -79,7 +85,7 @@ public class RouteServer extends AbstractNettyTcpServer {
 
     @Override
     public ChannelHandler getChannelHandler() {
-        return channelHandler;
+        return handler;
     }
 
 }

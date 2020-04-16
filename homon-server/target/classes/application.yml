@@ -1,6 +1,9 @@
+spring:
+  application:
+    name: netty-server
+
 server:
   port: 6111
-
 
 homon:
   netty:
@@ -10,3 +13,9 @@ homon:
     thread:
       bosscnt: 1
       workcnt: 8
+  zk:
+    enable: true
+    hosts: 127.0.0.1:21811
+    watchPath: /
+    digest: homon
+    namespace: homon

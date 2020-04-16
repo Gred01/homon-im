@@ -12,6 +12,7 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.api.ACLProvider;
 import org.apache.curator.framework.recipes.cache.ChildData;
 import org.apache.curator.framework.recipes.cache.TreeCache;
+import org.apache.curator.framework.recipes.cache.TreeCacheListener;
 import org.apache.curator.framework.state.ConnectionState;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
@@ -50,6 +51,7 @@ public final class ZKClient extends AbstractService {
     protected void doStart(IListener listener) throws Throwable {
         //启动client
         client.start();
+
         Assert.state(client.blockUntilConnected(1, TimeUnit.MINUTES),"start zk failure...");
 
         //初始缓存
@@ -129,6 +131,10 @@ public final class ZKClient extends AbstractService {
                 ephemeralSequentialNodes.forEach(this::regEphemeralSeqNodes);
             }
         });
+    }
+
+    public void registerListener(TreeCacheListener listener) {
+        cache.getListenable().addListener(listener);
     }
 
     /**
@@ -235,17 +241,17 @@ public final class ZKClient extends AbstractService {
     }
 
     /*** 重新注册临时节点 ***/
-    private void reRegEphemeralNodes(final String key,final String value){
+    public void reRegEphemeralNodes(final String key,final String value){
         regEphemeralNodes(key, value,false);
     }
 
     /*** 注册临时节点 ***/
-    private void regEphemeralNodes(final String key,final String value){
+    public void regEphemeralNodes(final String key,final String value){
         regEphemeralNodes(key, value,true);
     }
 
     /*** 注册临时节点 ***/
-    private void regEphemeralNodes(final String key,final String value,final boolean isLocalCache){
+    public void regEphemeralNodes(final String key,final String value,final boolean isLocalCache){
         try {
             if (isExisted(key)) {
                 client.delete().deletingChildrenIfNeeded().forPath(key);
@@ -263,17 +269,17 @@ public final class ZKClient extends AbstractService {
     }
 
     /*** 重新注册临时顺序节点 ***/
-    private void reRegEphemeralSeqNodes(final String key,final String value){
+    public void reRegEphemeralSeqNodes(final String key,final String value){
         regEphemeralNodes(key, value,false);
     }
 
     /*** 注册临时顺序节点 ***/
-    private void regEphemeralSeqNodes(final String key,final String value){
+    public void regEphemeralSeqNodes(final String key,final String value){
         regEphemeralNodes(key, value,true);
     }
 
     /*** 注册临时顺序节点 ***/
-    private void regEphemeralSeqNodes(final String key,final String value,final boolean isLocalCache){
+    public void regEphemeralSeqNodes(final String key,final String value,final boolean isLocalCache){
         try {
             client.create().creatingParentsIfNeeded()
                     .withMode(CreateMode.EPHEMERAL_SEQUENTIAL)

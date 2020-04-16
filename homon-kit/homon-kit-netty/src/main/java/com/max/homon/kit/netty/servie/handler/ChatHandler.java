@@ -28,6 +28,6 @@ public class ChatHandler extends AbstractBaseHandler<ChatMessage> {
     @Override
     public void handle(ChatMessage message) {
         //查询当前绑定链接和对象
-        log.debug("[Chat={}]收到消息,内容=[{}]",message.connection.getChannel().id(),message.toString());
+        log.info("[Chat={}]收到消息,内容=[{}]",message.connection.getChannel().id(),message.toString());
     }
 }

@@ -1,10 +1,14 @@
-package com.max.homon.server.list;
+package com.max.homon.server.listener;
 
-import com.max.homon.api.serivce.IListener;
+import com.max.homon.api.base.AbstractListener;
+import com.max.homon.core.base.FutureListener;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 @Slf4j
-public class StartSuccessListener implements IListener {
+public class StartSuccessListener extends AbstractListener {
+
 
     @Override
     public void onSuccess(Object... args) {

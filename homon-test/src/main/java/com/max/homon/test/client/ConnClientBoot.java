@@ -27,6 +27,7 @@ import com.max.homon.kit.netty.codec.PacketEncoder;
 import com.max.homon.kit.netty.config.NettyConfig;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -49,6 +50,7 @@ public final class ConnClientBoot extends AbstractService {
     private NioEventLoopGroup workerGroup;
     private NettyConfig nettyConfig;
     private IListener listener;
+    private Channel channel;
 
     public ConnClientBoot(NettyConfig config){
         this.nettyConfig = config;
@@ -111,6 +113,7 @@ public final class ConnClientBoot extends AbstractService {
                 }
             }
         });
+        this.channel=future.channel();
         return future;
     }
 
@@ -134,5 +137,9 @@ public final class ConnClientBoot extends AbstractService {
 
     public NioEventLoopGroup getWorkerGroup() {
         return workerGroup;
+    }
+
+    public Channel getChannel() {
+        return channel;
     }
 }

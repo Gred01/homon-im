@@ -40,6 +40,8 @@ import java.util.concurrent.atomic.AtomicReference;
 @Component
 public abstract class AbstractNettyTcpServer extends AbstractService implements IServer {
 
+    @Autowired
+    private NettyConfig nettyConfig;
 
     /*** 当前服务状态 ***/
     private AtomicReference<ServiceStatus> status = new AtomicReference<>(ServiceStatus.Created);
@@ -48,9 +50,7 @@ public abstract class AbstractNettyTcpServer extends AbstractService implements 
     private String host;
     private EventLoopGroup bossGroup;
     private EventLoopGroup workGroup;
-
-    @Autowired
-    private NettyConfig nettyConfig;
+    private IListener listener;
 
 
     @Override

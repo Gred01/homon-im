@@ -58,7 +58,9 @@ public final class NettyConnection implements IConnection, ChannelFutureListener
         this.channel = channel;
         this.config = config;
         this.context = new SessionContext();
-        context.setHeartbeat(config.getConnect().getCheckSeconds());
+        if (config != null){
+            context.setHeartbeat(config.getConnect().getCheckSeconds());
+        }
 
         this.lastReadTime = System.currentTimeMillis();
         this.status = (byte) ConnectionStatus.STATUS_CONNECTED.type;

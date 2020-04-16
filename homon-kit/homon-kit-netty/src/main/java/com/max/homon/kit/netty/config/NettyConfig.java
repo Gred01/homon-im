@@ -35,11 +35,11 @@ public class NettyConfig {
         private boolean enabledHeartBeat = true;
         private int maxTimeOuts = 3;
         /*** 超时检测时间 ***/
-        private int checkSeconds = 5;
+        private int checkSeconds = 60;
         /*** 读取超时时间，定时检测链接的活性,如果长时间没活动，就超时关闭 ***/
         private int readTimeouts = checkSeconds*2;
         /*** 写超时时间，避免对方误测，所以也需要定时推送心跳 ***/
-        private int writeTimeouts = 4;
+        private int writeTimeouts = 60;
     }
 
     @Setter

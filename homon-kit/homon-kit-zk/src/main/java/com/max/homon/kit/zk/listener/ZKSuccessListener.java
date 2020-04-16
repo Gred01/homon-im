@@ -1,18 +1,15 @@
 package com.max.homon.kit.zk.listener;
 
 
+import com.max.homon.api.base.AbstractListener;
 import com.max.homon.core.base.FutureListener;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @Slf4j
-public class ZKSuccessListenr extends FutureListener {
+public class ZKSuccessListener extends AbstractListener {
 
-
-    public ZKSuccessListenr(AtomicBoolean started) {
-        super(started);
-    }
 
     @Override
     public void onSuccess(Object... args) {

@@ -1,9 +1,0 @@
-spring:
-  application:
-    name: netty-server
-  main:
-    allow-bean-definition-overriding: true
-
-logging:
-  config: classpath:logback-spring.xml
-  path: ../logs

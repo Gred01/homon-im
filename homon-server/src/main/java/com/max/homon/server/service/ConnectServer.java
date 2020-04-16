@@ -1,8 +1,11 @@
 package com.max.homon.server.service;
 
 import com.max.homon.api.serivce.IListener;
+import com.max.homon.core.bean.zk.ServerNode;
+import com.max.homon.core.enums.ZKPaths;
 import com.max.homon.kit.netty.api.connection.IConnectionManager;
 import com.max.homon.kit.netty.base.AbstractNettyTcpServer;
+import com.max.homon.kit.netty.config.NettyConfig;
 import com.max.homon.server.handler.ServerChannelHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelHandler;
@@ -27,12 +30,22 @@ public class ConnectServer extends AbstractNettyTcpServer {
     private IConnectionManager connectionManager;
     @Autowired
     private ServerChannelHandler channelHandler;
+    @Autowired
+    private NettyConfig nettyConfig;
 
+    private ServerNode serverNode;
 
     @Override
     public void init() {
         super.init();
         connectionManager.init();
+
+        serverNode = new ServerNode();
+        //初始化节点
+        serverNode.setHost(nettyConfig.getHost())
+                .setPort(nettyConfig.getPort())
+                .setPersistent(false)
+                .setName(ZKPaths.CONN_SERVER.getPath());
     }
 
     /**
@@ -98,7 +111,6 @@ public class ConnectServer extends AbstractNettyTcpServer {
     @Override
     public void stop(IListener listener) {
         super.stop(listener);
-
         connectionManager.destroy();
     }
 
@@ -107,4 +119,7 @@ public class ConnectServer extends AbstractNettyTcpServer {
         return channelHandler;
     }
 
+    public ServerNode getServerNode() {
+        return serverNode;
+    }
 }

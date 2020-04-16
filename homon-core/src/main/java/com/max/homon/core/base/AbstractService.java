@@ -51,7 +51,7 @@ public abstract class AbstractService implements IService {
             try {
                 init();
                 function.apply(listener);
-                listener.monitor(this);//主要用于异步，否则应该放置在function.apply(listener)之前
+                listener.monitor(this);
             } catch (Throwable e) {
                 listener.onFailure(e);
                 throw new BizException(e);
@@ -123,7 +123,7 @@ public abstract class AbstractService implements IService {
     }
 
     protected void doStop(IListener listener) throws Throwable {
-        listener.onSuccess();
+        listener.onClosed();
     }
 
     /**
