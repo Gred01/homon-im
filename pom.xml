@@ -38,7 +38,7 @@
         <fast.json.version>1.2.47</fast.json.version>
         <commons.version>3.6</commons.version>
         <guava.version>20.0</guava.version>
-        <junit.version>4.13</junit.version>
+        <junit.version>4.13.1</junit.version>
         <jackson.version>2.9.6</jackson.version>
         <protostuff.version>1.1.5</protostuff.version>
         <mybatis.plus.version>3.0.7</mybatis.plus.version>
